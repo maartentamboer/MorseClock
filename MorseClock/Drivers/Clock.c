@@ -16,12 +16,17 @@
 
 #include "Clock.h"
 #include "Morse.h"
+#include "rgb.h"
 int i=0;
 time_t tt;
 bool updated =false;
+bool bChangeEnable = false;
+int selector = MINUTES;
+int iChangeMin = 0;
+int iChangeHour = 0;
 void init_clock(void)
 {
-	settime(16,06,0);
+	settime(00,00,00);
 	SysCtlPeripheralEnable(SYSCTL_PERIPH_HIBERNATE);					//Enable the Hibernation module
 	HibernateEnableExpClk(SysCtlClockGet());
 	HibernateRTCEnable();
@@ -78,6 +83,42 @@ void runtime(void)
 			printtime();
 			updated = false;
 		}
+	}
+}
+
+void Changetime(int mode)
+{
+	switch(mode)
+	{
+	case ENABLE:
+		iChangeMin = 0;
+		iChangeHour = 0;
+		bChangeEnable = true;
+		break;
+	case NEXT:
+		if (bChangeEnable == true)
+		{
+			if (selector == MINUTES)
+				selector = HOURS;
+			else if (selector == HOURS)
+			{
+				bChangeEnable = false;
+				selector = MINUTES;
+				settime(iChangeHour,iChangeMin,00);
+			}
+		}
+		break;
+	case ADD:
+		if (bChangeEnable == true)
+		{
+			if (selector == MINUTES)
+				iChangeMin++;
+			else if (selector == HOURS)
+				iChangeHour++;
+		}
+		break;
+	default:
+		break;
 	}
 }
 

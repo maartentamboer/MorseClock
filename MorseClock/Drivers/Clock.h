@@ -10,12 +10,25 @@
 
 #include <time.h>
 
+#define ENABLE 	1
+#define NEXT   	2
+#define ADD		3
+
 extern time_t tt;
+
+enum selectedit
+{
+	MINUTES = 0,
+	HOURS = 1,
+	DONE =2
+};
+
 
 void init_clock(void);
 void settime(int hr, int min, int s);
 void printtime(void);
 void runtime(void);
+void Changetime(int mode);
 void RTC_Handler(void);
 
 

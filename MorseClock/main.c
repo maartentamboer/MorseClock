@@ -11,19 +11,19 @@
 #include "Drivers/Morse.h"
 #include "Drivers/Clock.h"
 #include "Drivers/rgb.h"
+#include "Drivers/buttons.h"
 
 int PinData=2;
 
 
 
 char message[] = "SOS";
-char message2[] = "Maarten en Sjoerd .";
-
-
 
 
 int main(void)
 {
+	unsigned char ucDelta = 0;
+	unsigned char ucState = 0;
 	SysCtlClockSet(SYSCTL_SYSDIV_5|SYSCTL_USE_PLL|SYSCTL_XTAL_16MHZ|SYSCTL_OSC_MAIN);
 
 	SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
@@ -37,8 +37,12 @@ int main(void)
 	UARTprintf("\nMorseClock \n");
 	UARTprintf("Sjoerd Willemsen en Maarten Tamboer\n");
 	UARTprintf("Version: %s, %s\n\n",__DATE__,__TIME__);
+	ButtonsInit();
 	RGBInit(0);
 	unsigned long ulColors[]={0x1000,0xFF00,0xFF00};
+	unsigned long ulRED[]={0xFF00,0x0000,0x0000};
+	unsigned long ulGREEN[]={0x0000,0xFF00,0x0000};
+	unsigned long ulBLUE[]={0x0000,0x0000,0xFF00};
 	RGBSet(ulColors,0.1);
 	RGBEnable();
 
@@ -50,9 +54,31 @@ int main(void)
 	}
 	RGBSet(ulColors,0.1);
 	init_clock();
+	RGBSet(ulColors,0.1);
 	while(1){
-		 SysCtlDelay(2000000);
+		ucState = ButtonsPoll(&ucDelta, 0);
+		if(BUTTON_PRESSED(LEFT_BUTTON, ucState, ucDelta))
+		{
+			RGBSet(ulRED,1);
+			Changetime(ADD);
+			UARTprintf("LEFT_BUTTON pressed\n");
+			printtime();
+		}
+		else if(BUTTON_PRESSED(RIGHT_BUTTON, ucState, ucDelta))
+		{
+			RGBSet(ulGREEN,1);
+			Changetime(NEXT);
+			UARTprintf("RIGHT_BUTTON pressed\n");
+			printtime();
+		}
+		else if(BUTTON_PRESSED(ALL_BUTTONS, ucState, ucDelta))
+		{
+			RGBSet(ulBLUE,1);
+			Changetime(ENABLE);
+			UARTprintf("ALL_BUTTON pressed\n");
+			printtime();
+		}
 		 //gettime();
-		 runtime();
+		 //runtime();
 	}
 }
