@@ -46,7 +46,6 @@ int main(void)
 	digitalWrite(0,YELLOW);
 	delay(DOTLENGTH * 10);
 	init_clock();
-
 	while(1){
 		 SysCtlDelay(2000000);
 		 //gettime();

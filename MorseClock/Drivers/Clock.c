@@ -21,6 +21,7 @@ time_t tt;
 bool updated =false;
 void init_clock(void)
 {
+	settime(15,30,0);
 	SysCtlPeripheralEnable(SYSCTL_PERIPH_HIBERNATE);					//Enable the Hibernation module
 	HibernateEnableExpClk(SysCtlClockGet());
 	HibernateRTCEnable();
@@ -50,14 +51,17 @@ void reinit(void)
 void settime(int hr, int min, int s)
 {
 	struct tm * timeinfo;
-	 timeinfo = localtime ( &tt );
+	timeinfo = localtime ( &tt );
 	timeinfo->tm_hour = hr;
 	timeinfo->tm_min = min;
 	timeinfo->tm_sec = s;
-	mktime(timeinfo);
+	timeinfo->tm_year = 2013-1900;
+	timeinfo->tm_mon = 2 - 1;
+	timeinfo->tm_mday = 10;
+	tt = mktime(timeinfo);
 }
 
-void gettime(void)
+void printtime(void)
 {
 	char * c_time_string;
 	c_time_string = ctime(&tt);
@@ -71,7 +75,7 @@ void runtime(void)
 	{
 		if(updated == true)
 		{
-			gettime();
+			printtime();
 			updated = false;
 		}
 	}
