@@ -12,22 +12,16 @@
 #define LED_GREEN_PIN	GPIO_PIN_3
 #define LED_BLUE_PIN	GPIO_PIN_2
 
-#define RED 			LED_RED_PIN
-#define GREEN 			LED_GREEN_PIN
-#define BLUE			LED_BLUE_PIN
-#define YELLOW			LED_RED_PIN + LED_GREEN_PIN
-#define PURPLE			LED_RED_PIN + LED_BLUE_PIN
-#define LIGHTBLUE		LED_GREEN_PIN + LED_BLUE_PIN
-#define WHITE			LED_RED_PIN + LED_GREEN_PIN + LED_BLUE_PIN
+#define HIGH			1
+#define MIDDLE			0.5
 #define	OFF				0
 
 #define OUTLINE 4
-#define HIGH BLUE
 #define LOW  0x00
 #define DOTLENGTH 2000000
 
 void send(char letter);
 void delay(long int Length);
-void digitalWrite (int iPin, int iValue);
+void digitalWrite (int iPin, float iValue);
 
 #endif /* MORSE_H_ */

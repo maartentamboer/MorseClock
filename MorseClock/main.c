@@ -10,12 +10,13 @@
 
 #include "Drivers/Morse.h"
 #include "Drivers/Clock.h"
+#include "Drivers/rgb.h"
 
 int PinData=2;
 
 
 
-char message[] = "1234567890.";
+char message[] = "SOS";
 char message2[] = "Maarten en Sjoerd .";
 
 
@@ -36,15 +37,18 @@ int main(void)
 	UARTprintf("\nMorseClock \n");
 	UARTprintf("Sjoerd Willemsen en Maarten Tamboer\n");
 	UARTprintf("Version: %s, %s\n\n",__DATE__,__TIME__);
-	int j = 0;
+	RGBInit(0);
+	unsigned long ulColors[]={0x1000,0xFF00,0xFF00};
+	RGBSet(ulColors,0.1);
+	RGBEnable();
 
+	int j = 0;
 	delay(DOTLENGTH * 10);
 	for (j=0; j<sizeof(message); j++)
 	{
 		send(message[j]); // Send each character in the message.
 	}
-	digitalWrite(0,YELLOW);
-	delay(DOTLENGTH * 10);
+	RGBSet(ulColors,0.1);
 	init_clock();
 	while(1){
 		 SysCtlDelay(2000000);

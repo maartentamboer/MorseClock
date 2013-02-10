@@ -21,7 +21,7 @@ time_t tt;
 bool updated =false;
 void init_clock(void)
 {
-	settime(15,30,0);
+	settime(16,06,0);
 	SysCtlPeripheralEnable(SYSCTL_PERIPH_HIBERNATE);					//Enable the Hibernation module
 	HibernateEnableExpClk(SysCtlClockGet());
 	HibernateRTCEnable();
@@ -101,12 +101,12 @@ void RTC_Handler(void)
 		++tt;
 		if (i==0)
 		{
-			digitalWrite(0,RED);
+			//digitalWrite(0,RED);
 			i++;
 		}
 		else
 		{
-			digitalWrite(0,GREEN);
+			//digitalWrite(0,GREEN);
 			i=0;
 		}
 		updated = true;

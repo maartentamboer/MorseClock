@@ -10,7 +10,7 @@
 
 #include <time.h>
 
-
+extern time_t tt;
 
 void init_clock(void);
 void settime(int hr, int min, int s);

@@ -2,7 +2,6 @@
 #include "inc/hw_types.h"
 #include "driverlib/gpio.h"
 #include "driverlib/sysctl.h"
-
 /*
  * Morse.c
  *
@@ -10,10 +9,12 @@
  *      Author: Administrator
  */
 #include "Morse.h"
-
-void digitalWrite (int iPin, int iValue)
+#include "rgb.h"
+void digitalWrite (int iPin, float iValue)
 {
-	GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3, iValue);
+	//GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3, iValue);
+	unsigned long ulColors[]={0xFF00,0xFF00,0xFF00};
+	RGBSet(ulColors,iValue);
 }
 
 void delay(long int Length)
@@ -25,7 +26,7 @@ void delay(long int Length)
 
 void dot() {
     // Make a dot signal
-    digitalWrite(OUTLINE, RED);
+    digitalWrite(OUTLINE, HIGH);
     delay(DOTLENGTH);
     digitalWrite(OUTLINE, LOW);
     delay(DOTLENGTH);
@@ -33,7 +34,7 @@ void dot() {
 
 void dash() {
     // Make a dash signal
-    digitalWrite(OUTLINE, BLUE);
+    digitalWrite(OUTLINE, HIGH);
     delay(3*DOTLENGTH);
     digitalWrite(OUTLINE, LOW);
     delay(DOTLENGTH);

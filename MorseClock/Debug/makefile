@@ -8,6 +8,8 @@ CG_TOOL_ROOT := C:/ti/ccsv5/tools/compiler/tms470_4.9.5
 
 ORDERED_OBJS += \
 $(GEN_CMDS__FLAG) \
+"./Drivers/rgb.obj" \
+"./Drivers/buttons.obj" \
 "./Drivers/Morse.obj" \
 "./Drivers/Clock.obj" \
 "./Utils/uartstdio.obj" \
@@ -124,15 +126,15 @@ all: MorseClock.out
 MorseClock.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: ARM Linker'
-	"C:/ti/ccsv5/tools/compiler/tms470_4.9.5/bin/cl470" -mv7M4 --code_state=16 --float_support=FPv4SPD16 --abi=eabi -me -g --diag_warning=225 --display_error_number -z --stack_size=256 -m"MorseClock.map" --heap_size=0 -i"C:/ti/ccsv5/tools/compiler/tms470_4.9.5/lib" -i"C:/ti/ccsv5/tools/compiler/tms470_4.9.5/include" --reread_libs --warn_sections --display_error_number --rom_model -o "MorseClock.out" $(ORDERED_OBJS)
+	"C:/ti/ccsv5/tools/compiler/tms470_4.9.5/bin/cl470" -mv7M4 --code_state=16 --float_support=FPv4SPD16 --abi=eabi -me -g --define=TARGET_IS_BLIZZARD_RA1 --diag_warning=225 --display_error_number -z --stack_size=256 -m"MorseClock.map" --heap_size=0 -i"C:/ti/ccsv5/tools/compiler/tms470_4.9.5/lib" -i"C:/ti/ccsv5/tools/compiler/tms470_4.9.5/include" --reread_libs --warn_sections --display_error_number --rom_model -o "MorseClock.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
 	-$(RM) $(TMS470_EXECUTABLE_OUTPUTS__QUOTED) "MorseClock.out"
-	-$(RM) "main.pp" "startup_ccs.pp" "Utils\uartstdio.pp" "Drivers\Clock.pp" "Drivers\Morse.pp" 
-	-$(RM) "main.obj" "startup_ccs.obj" "Utils\uartstdio.obj" "Drivers\Clock.obj" "Drivers\Morse.obj" 
+	-$(RM) "main.pp" "startup_ccs.pp" "Utils\uartstdio.pp" "Drivers\Clock.pp" "Drivers\Morse.pp" "Drivers\buttons.pp" "Drivers\rgb.pp" 
+	-$(RM) "main.obj" "startup_ccs.obj" "Utils\uartstdio.obj" "Drivers\Clock.obj" "Drivers\Morse.obj" "Drivers\buttons.obj" "Drivers\rgb.obj" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

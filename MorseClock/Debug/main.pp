@@ -13,6 +13,7 @@ main.obj: ../Drivers/Morse.h
 main.obj: ../Drivers/Clock.h
 main.obj: C:/ti/ccsv5/tools/compiler/tms470_4.9.5/include/time.h
 main.obj: C:/ti/ccsv5/tools/compiler/tms470_4.9.5/include/linkage.h
+main.obj: ../Drivers/rgb.h
 
 ../main.c: 
 C:/StellarisWare/inc/hw_memmap.h: 
@@ -27,3 +28,4 @@ C:/StellarisWare/utils/uartstdio.h:
 ../Drivers/Clock.h: 
 C:/ti/ccsv5/tools/compiler/tms470_4.9.5/include/time.h: 
 C:/ti/ccsv5/tools/compiler/tms470_4.9.5/include/linkage.h: 
+../Drivers/rgb.h: 
