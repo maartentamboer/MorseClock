@@ -14,6 +14,8 @@ main.obj: C:/ti/ccsv5/tools/compiler/tms470_4.9.5/include/stdio.h
 main.obj: C:/ti/ccsv5/tools/compiler/tms470_4.9.5/include/linkage.h
 main.obj: C:/ti/ccsv5/tools/compiler/tms470_4.9.5/include/stdarg.h
 main.obj: ../Drivers/Morse.h
+main.obj: ../Drivers/Clock.h
+main.obj: C:/ti/ccsv5/tools/compiler/tms470_4.9.5/include/time.h
 
 ../main.c: 
 C:/StellarisWare/inc/hw_memmap.h: 
@@ -29,3 +31,5 @@ C:/ti/ccsv5/tools/compiler/tms470_4.9.5/include/stdio.h:
 C:/ti/ccsv5/tools/compiler/tms470_4.9.5/include/linkage.h: 
 C:/ti/ccsv5/tools/compiler/tms470_4.9.5/include/stdarg.h: 
 ../Drivers/Morse.h: 
+../Drivers/Clock.h: 
+C:/ti/ccsv5/tools/compiler/tms470_4.9.5/include/time.h: 

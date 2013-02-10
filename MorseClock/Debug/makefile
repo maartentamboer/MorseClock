@@ -9,6 +9,7 @@ CG_TOOL_ROOT := C:/ti/ccsv5/tools/compiler/tms470_4.9.5
 ORDERED_OBJS += \
 $(GEN_CMDS__FLAG) \
 "./Drivers/Morse.obj" \
+"./Drivers/Clock.obj" \
 "./startup_ccs.obj" \
 "./main.obj" \
 -l"libc.a" \
@@ -127,8 +128,8 @@ MorseClock.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 # Other Targets
 clean:
 	-$(RM) $(TMS470_EXECUTABLE_OUTPUTS__QUOTED) "MorseClock.out"
-	-$(RM) "main.pp" "startup_ccs.pp" "Drivers\Morse.pp" 
-	-$(RM) "main.obj" "startup_ccs.obj" "Drivers\Morse.obj" 
+	-$(RM) "main.pp" "startup_ccs.pp" "Drivers\Clock.pp" "Drivers\Morse.pp" 
+	-$(RM) "main.obj" "startup_ccs.obj" "Drivers\Clock.obj" "Drivers\Morse.obj" 
 	-@echo 'Finished clean'
 	-@echo ' '
 
