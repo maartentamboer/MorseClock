@@ -78,6 +78,11 @@ int main(void)
 			UARTprintf("ALL_BUTTON pressed\n");
 			printtime();
 		}
+		if (bRTCUpdated == true)
+		{
+			printtime();
+			bRTCUpdated = false;
+		}
 		 //gettime();
 		 //runtime();
 	}

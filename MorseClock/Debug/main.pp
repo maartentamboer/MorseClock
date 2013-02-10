@@ -13,6 +13,10 @@ main.obj: ../Drivers/Morse.h
 main.obj: ../Drivers/Clock.h
 main.obj: C:/ti/ccsv5/tools/compiler/tms470_4.9.5/include/time.h
 main.obj: C:/ti/ccsv5/tools/compiler/tms470_4.9.5/include/linkage.h
+main.obj: C:/ti/ccsv5/tools/compiler/tms470_4.9.5/include/stdbool.h
+main.obj: C:/ti/ccsv5/tools/compiler/tms470_4.9.5/include/yvals.h
+main.obj: C:/ti/ccsv5/tools/compiler/tms470_4.9.5/include/stdarg.h
+main.obj: C:/ti/ccsv5/tools/compiler/tms470_4.9.5/include/_lock.h
 main.obj: ../Drivers/rgb.h
 main.obj: ../Drivers/buttons.h
 
@@ -29,5 +33,9 @@ C:/StellarisWare/utils/uartstdio.h:
 ../Drivers/Clock.h: 
 C:/ti/ccsv5/tools/compiler/tms470_4.9.5/include/time.h: 
 C:/ti/ccsv5/tools/compiler/tms470_4.9.5/include/linkage.h: 
+C:/ti/ccsv5/tools/compiler/tms470_4.9.5/include/stdbool.h: 
+C:/ti/ccsv5/tools/compiler/tms470_4.9.5/include/yvals.h: 
+C:/ti/ccsv5/tools/compiler/tms470_4.9.5/include/stdarg.h: 
+C:/ti/ccsv5/tools/compiler/tms470_4.9.5/include/_lock.h: 
 ../Drivers/rgb.h: 
 ../Drivers/buttons.h: 

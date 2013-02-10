@@ -19,14 +19,14 @@
 #include "rgb.h"
 int i=0;
 time_t tt;
-bool updated =false;
 bool bChangeEnable = false;
+bool bRTCUpdated = false;
 int selector = MINUTES;
 int iChangeMin = 0;
 int iChangeHour = 0;
 void init_clock(void)
 {
-	settime(00,00,00);
+	settime(17,47,00);
 	SysCtlPeripheralEnable(SYSCTL_PERIPH_HIBERNATE);					//Enable the Hibernation module
 	HibernateEnableExpClk(SysCtlClockGet());
 	HibernateRTCEnable();
@@ -74,14 +74,18 @@ void printtime(void)
 	SysCtlDelay(1);
 }
 
+void gettime(struct tm * timeinfo)
+{
+	timeinfo = localtime (&tt);
+}
 void runtime(void)
 {
 	while(1)
 	{
-		if(updated == true)
+		if(bRTCUpdated == true)
 		{
 			printtime();
-			updated = false;
+			bRTCUpdated = false;
 		}
 	}
 }
@@ -150,6 +154,6 @@ void RTC_Handler(void)
 			//digitalWrite(0,GREEN);
 			i=0;
 		}
-		updated = true;
+		bRTCUpdated = true;
 	}
 }

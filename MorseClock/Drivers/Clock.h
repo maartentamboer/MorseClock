@@ -9,6 +9,7 @@
 #define CLOCK_H_
 
 #include <time.h>
+#include <stdbool.h>
 
 #define ENABLE 	1
 #define NEXT   	2
@@ -23,6 +24,7 @@ enum selectedit
 	DONE =2
 };
 
+extern bool bRTCUpdated;
 
 void init_clock(void);
 void settime(int hr, int min, int s);

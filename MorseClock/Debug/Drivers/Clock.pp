@@ -17,6 +17,7 @@ Drivers/Clock.obj: C:/ti/ccsv5/tools/compiler/tms470_4.9.5/include/_lock.h
 Drivers/Clock.obj: ../Drivers/Clock.h
 Drivers/Clock.obj: C:/ti/ccsv5/tools/compiler/tms470_4.9.5/include/time.h
 Drivers/Clock.obj: ../Drivers/Morse.h
+Drivers/Clock.obj: ../Drivers/rgb.h
 
 ../Drivers/Clock.c: 
 C:/StellarisWare/inc/hw_memmap.h: 
@@ -35,3 +36,4 @@ C:/ti/ccsv5/tools/compiler/tms470_4.9.5/include/_lock.h:
 ../Drivers/Clock.h: 
 C:/ti/ccsv5/tools/compiler/tms470_4.9.5/include/time.h: 
 ../Drivers/Morse.h: 
+../Drivers/rgb.h: 
