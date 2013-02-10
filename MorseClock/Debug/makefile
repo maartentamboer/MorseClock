@@ -10,6 +10,7 @@ ORDERED_OBJS += \
 $(GEN_CMDS__FLAG) \
 "./Drivers/Morse.obj" \
 "./Drivers/Clock.obj" \
+"./Utils/uartstdio.obj" \
 "./startup_ccs.obj" \
 "./main.obj" \
 -l"libc.a" \
@@ -24,8 +25,10 @@ RMDIR := RMDIR /S/Q
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include subdir_vars.mk
+-include Utils/subdir_vars.mk
 -include Drivers/subdir_vars.mk
 -include subdir_rules.mk
+-include Utils/subdir_rules.mk
 -include Drivers/subdir_rules.mk
 -include objects.mk
 
@@ -128,8 +131,8 @@ MorseClock.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 # Other Targets
 clean:
 	-$(RM) $(TMS470_EXECUTABLE_OUTPUTS__QUOTED) "MorseClock.out"
-	-$(RM) "main.pp" "startup_ccs.pp" "Drivers\Clock.pp" "Drivers\Morse.pp" 
-	-$(RM) "main.obj" "startup_ccs.obj" "Drivers\Clock.obj" "Drivers\Morse.obj" 
+	-$(RM) "main.pp" "startup_ccs.pp" "Utils\uartstdio.pp" "Drivers\Clock.pp" "Drivers\Morse.pp" 
+	-$(RM) "main.obj" "startup_ccs.obj" "Utils\uartstdio.obj" "Drivers\Clock.obj" "Drivers\Morse.obj" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

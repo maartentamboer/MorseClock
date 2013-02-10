@@ -1,11 +1,12 @@
 #include "inc/hw_memmap.h"
 #include "inc/hw_types.h"
+
 #include "driverlib/sysctl.h"
 #include "driverlib/gpio.h"
-#include "driverlib/adc.h"
+#include "driverlib/pin_map.h"
+
 #include "utils/ustdlib.h"
-#include "driverlib/hibernate.h"
-#include <stdio.h>
+#include "utils/uartstdio.h"
 
 #include "Drivers/Morse.h"
 #include "Drivers/Clock.h"
@@ -26,6 +27,15 @@ int main(void)
 
 	SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
 	GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3);
+
+	SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
+	GPIOPinConfigure(0x00000001);
+	GPIOPinConfigure(0x00000401);
+	GPIOPinTypeUART(GPIO_PORTA_BASE, GPIO_PIN_0 | GPIO_PIN_1);
+	UARTStdioInit(0);
+	UARTprintf("\nMorseClock \n");
+	UARTprintf("Sjoerd Willemsen en Maarten Tamboer\n");
+	UARTprintf("Version: %s, %s\n\n",__DATE__,__TIME__);
 	int j = 0;
 
 	delay(DOTLENGTH * 10);
@@ -39,6 +49,7 @@ int main(void)
 
 	while(1){
 		 SysCtlDelay(2000000);
-		 gettime();
+		 //gettime();
+		 runtime();
 	}
 }

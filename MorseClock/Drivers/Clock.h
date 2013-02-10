@@ -15,6 +15,7 @@
 void init_clock(void);
 void settime(int hr, int min, int s);
 void gettime(void);
+void runtime(void);
 void RTC_Handler(void);
 
 

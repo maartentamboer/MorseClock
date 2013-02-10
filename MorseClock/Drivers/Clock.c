@@ -8,12 +8,17 @@
 #include "inc/hw_types.h"
 #include "driverlib/gpio.h"
 #include "driverlib/hibernate.h"
+#include "utils/uartstdio.h"
+#include "driverlib/pin_map.h"
+
 #include <time.h>
+#include <stdbool.h>
 
 #include "Clock.h"
 #include "Morse.h"
 int i=0;
 time_t tt;
+bool updated =false;
 void init_clock(void)
 {
 	SysCtlPeripheralEnable(SYSCTL_PERIPH_HIBERNATE);					//Enable the Hibernation module
@@ -56,8 +61,20 @@ void gettime(void)
 {
 	char * c_time_string;
 	c_time_string = ctime(&tt);
-
+	UARTprintf("%s\n",c_time_string);
 	SysCtlDelay(1);
+}
+
+void runtime(void)
+{
+	while(1)
+	{
+		if(updated == true)
+		{
+			gettime();
+			updated = false;
+		}
+	}
 }
 
 void RTC_Handler(void)
@@ -88,5 +105,6 @@ void RTC_Handler(void)
 			digitalWrite(0,GREEN);
 			i=0;
 		}
+		updated = true;
 	}
 }
