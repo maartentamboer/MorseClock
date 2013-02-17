@@ -1,7 +1,7 @@
 ******************************************************************************
                   TMS470 Linker PC v4.9.5                      
 ******************************************************************************
->> Linked Sun Feb 10 17:47:00 2013
+>> Linked Sun Feb 17 14:02:57 2013
 
 OUTPUT FILE NAME:   <MorseClock.out>
 ENTRY POINT SYMBOL: "_c_int00"  address: 00001f85
@@ -11,25 +11,25 @@ MEMORY CONFIGURATION
 
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
-  FLASH                 00000000   00040000  0000260c  0003d9f4  R  X
-  SRAM                  20000000   00008000  0000041f  00007be1  RW X
+  FLASH                 00000000   00040000  00002614  0003d9ec  R  X
+  SRAM                  20000000   00008000  00000423  00007bdd  RW X
 
 
 SEGMENT ALLOCATION MAP
 
 run origin  load origin   length   init length attrs members
 ----------  ----------- ---------- ----------- ----- -------
-00000000    00000000    00002610   00002610    r-x
+00000000    00000000    00002618   00002618    r-x
   00000000    00000000    0000026c   0000026c    r-- .intvecs
   0000026c    0000026c    00002040   00002040    r-x .text
   000022ac    000022ac    000002f8   000002f8    r-- .const
-  000025a8    000025a8    00000068   00000068    r-- .cinit
+  000025a8    000025a8    00000070   00000070    r-- .cinit
 20000000    20000000    000003cc   00000000    rw-
   20000000    20000000    0000026c   00000000    rw- .vtable
   2000026c    2000026c    00000100   00000000    rw- .stack
   2000036c    2000036c    00000060   00000000    rw- .bss
-200003cc    200003cc    00000053   00000053    rw-
-  200003cc    200003cc    00000053   00000053    rw- .data
+200003cc    200003cc    00000057   00000057    rw-
+  200003cc    200003cc    00000057   00000057    rw- .data
 
 
 SECTION ALLOCATION MAP
@@ -116,12 +116,14 @@ section   page    origin      length       input sections
                   00002596    00000002     --HOLE-- [fill = 0]
                   00002598    0000000c     Morse.obj (.const)
 
-.cinit     0    000025a8    00000068     
-                  000025a8    00000034     (.cinit..data.load) [load image, compression = rle]
-                  000025dc    0000000c     (__TI_handler_table)
-                  000025e8    00000008     (.cinit..bss.load) [load image, compression = zero_init]
-                  000025f0    00000008     (.cinit..vtable.load) [load image, compression = zero_init]
-                  000025f8    00000018     (__TI_cinit_table)
+.cinit     0    000025a8    00000070     
+                  000025a8    00000037     (.cinit..data.load) [load image, compression = rle]
+                  000025df    00000001     --HOLE-- [fill = 0]
+                  000025e0    0000000c     (__TI_handler_table)
+                  000025ec    00000004     --HOLE-- [fill = 0]
+                  000025f0    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  000025f8    00000008     (.cinit..vtable.load) [load image, compression = zero_init]
+                  00002600    00000018     (__TI_cinit_table)
 
 .vtable    0    20000000    0000026c     UNINITIALIZED
                   20000000    0000026c     driverlib-cm4f.lib : interrupt.obj (.vtable)
@@ -137,30 +139,31 @@ section   page    origin      length       input sections
                   200003c4    00000004     Clock.obj (.bss)
                   200003c8    00000004     driverlib-cm4f.lib : hibernate.obj (.bss)
 
-.data      0    200003cc    00000053     
+.data      0    200003cc    00000057     
                   200003cc    00000018     Clock.obj (.data)
                   200003e4    00000010     rtsv7M4_T_le_v4SPD16_eabi.lib : tmzone.obj (.data)
-                  200003f4    00000008     main.obj (.data)
-                  200003fc    00000008     rtsv7M4_T_le_v4SPD16_eabi.lib : _lock.obj (.data)
-                  20000404    00000008                                   : exit.obj (.data)
-                  2000040c    00000005     uartstdio.obj (.data)
-                  20000411    00000003     --HOLE--
-                  20000414    00000004     rgb.obj (.data)
-                  20000418    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : stkdepth_vars.obj (.data)
-                  2000041c    00000003     buttons.obj (.data)
+                  200003f4    00000009     main.obj (.data)
+                  200003fd    00000003     --HOLE--
+                  20000400    00000008     rtsv7M4_T_le_v4SPD16_eabi.lib : _lock.obj (.data)
+                  20000408    00000008                                   : exit.obj (.data)
+                  20000410    00000005     uartstdio.obj (.data)
+                  20000415    00000003     --HOLE--
+                  20000418    00000004     rgb.obj (.data)
+                  2000041c    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : stkdepth_vars.obj (.data)
+                  20000420    00000003     buttons.obj (.data)
 
 
 LINKER GENERATED COPY TABLES
 
-__TI_cinit_table @ 000025f8 records: 3, size/record: 8, table size: 24
-	.data: load addr=000025a8, load size=00000034 bytes, run addr=200003cc, run size=00000053 bytes, compression=rle
-	.bss: load addr=000025e8, load size=00000008 bytes, run addr=2000036c, run size=00000060 bytes, compression=zero_init
-	.vtable: load addr=000025f0, load size=00000008 bytes, run addr=20000000, run size=0000026c bytes, compression=zero_init
+__TI_cinit_table @ 00002600 records: 3, size/record: 8, table size: 24
+	.data: load addr=000025a8, load size=00000037 bytes, run addr=200003cc, run size=00000057 bytes, compression=rle
+	.bss: load addr=000025f0, load size=00000008 bytes, run addr=2000036c, run size=00000060 bytes, compression=zero_init
+	.vtable: load addr=000025f8, load size=00000008 bytes, run addr=20000000, run size=0000026c bytes, compression=zero_init
 
 
 LINKER GENERATED HANDLER TABLE
 
-__TI_handler_table @ 000025dc records: 3, size/record: 4, table size: 12
+__TI_handler_table @ 000025e0 records: 3, size/record: 4, table size: 12
 	index: 0, handler: __TI_zero_init
 	index: 1, handler: __TI_decompress_rle24
 	index: 2, handler: __TI_decompress_none
@@ -222,10 +225,10 @@ UNDEFED    SHT$$INIT_ARRAY$$Limit
 2000036c   __STACK_END
 00000100   __STACK_SIZE
 2000036c   __STACK_TOP
-000025f8   __TI_CINIT_Base
-00002610   __TI_CINIT_Limit
-000025dc   __TI_Handler_Table_Base
-000025e8   __TI_Handler_Table_Limit
+00002600   __TI_CINIT_Base
+00002618   __TI_CINIT_Limit
+000025e0   __TI_Handler_Table_Base
+000025ec   __TI_Handler_Table_Limit
 00000001   __TI_args_main
 00001c59   __TI_auto_init
 0000226f   __TI_decompress_none
@@ -241,15 +244,15 @@ ffffffff   __c_args__
 2000026c   __stack
 00002149   _args_main
 00001f85   _c_int00
-20000404   _cleanup_ptr
-20000408   _dtors_ptr
-200003fc   _lock
+20000408   _cleanup_ptr
+2000040c   _dtors_ptr
+20000400   _lock
 0000213d   _nop
 00002137   _register_lock
 00002131   _register_unlock
 00001e09   _tvaltostr
 200003e4   _tz
-20000400   _unlock
+20000404   _unlock
 00001fd1   abort
 00001b15   asctime
 200003d0   bChangeEnable
@@ -272,7 +275,7 @@ ffffffff   binit
 000002eb   letterBreak
 00001ef1   localtime
 0000119d   main
-20000418   main_func_sp
+2000041c   main_func_sp
 00001bbd   memcpy
 200003f8   message
 00000c7d   mktime
@@ -380,10 +383,10 @@ address    name
 00002295   ResetISR
 000022a1   SysCtlDelay
 000022a7   __TI_decompress_rle24
-000025dc   __TI_Handler_Table_Base
-000025e8   __TI_Handler_Table_Limit
-000025f8   __TI_CINIT_Base
-00002610   __TI_CINIT_Limit
+000025e0   __TI_Handler_Table_Base
+000025ec   __TI_Handler_Table_Limit
+00002600   __TI_CINIT_Base
+00002618   __TI_CINIT_Limit
 20000000   g_pfnRAMVectors
 2000026c   __stack
 2000036c   __STACK_END
@@ -398,11 +401,11 @@ address    name
 200003e4   _tz
 200003f4   PinData
 200003f8   message
-200003fc   _lock
-20000400   _unlock
-20000404   _cleanup_ptr
-20000408   _dtors_ptr
-20000418   main_func_sp
+20000400   _lock
+20000404   _unlock
+20000408   _cleanup_ptr
+2000040c   _dtors_ptr
+2000041c   main_func_sp
 ffffffff   __binit__
 ffffffff   __c_args__
 ffffffff   binit

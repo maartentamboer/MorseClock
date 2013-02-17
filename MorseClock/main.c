@@ -17,7 +17,7 @@ int PinData=2;
 
 
 
-char message[] = "SOS";
+char message[] = "SOS.";
 
 
 int main(void)
