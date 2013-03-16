@@ -2,7 +2,8 @@
  * pins.h
  *
  *  Created on: 16 mrt. 2013
- *      Author: Administrator
+ *      Author: https://github.com/sultanqasim/Stellarino
+ *      see Stellarino_pins.h
  */
 
 #ifndef PINS_H_

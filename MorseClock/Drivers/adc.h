@@ -2,9 +2,9 @@
  * adc.h
  *
  *  Created on: 16 mrt. 2013
- *      Author: Administrator
+ *      Author: Maarten Tamboer, Sjoerd Willemsen
+ *      and https://github.com/sultanqasim/Stellarino
  */
-
 #ifndef ADC_H_
 #define ADC_H_
 

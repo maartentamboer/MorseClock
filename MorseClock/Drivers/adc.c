@@ -2,7 +2,8 @@
  * adc.c
  *
  *  Created on: 16 mrt. 2013
- *      Author: Administrator
+ *      Author: Maarten Tamboer, Sjoerd Willemsen
+ *      and https://github.com/sultanqasim/Stellarino
  */
 #include "adc.h"
 #include "pins.h"
