@@ -21,12 +21,13 @@ int i=0;
 time_t tt;
 bool bChangeEnable = false;
 bool bRTCUpdated = false;
+bool bTimeSet = false;
 int selector = MINUTES;
 int iChangeMin = 0;
 int iChangeHour = 0;
 void init_clock(void)
 {
-	settime(17,47,00);
+	settime(00,00,00);
 	SysCtlPeripheralEnable(SYSCTL_PERIPH_HIBERNATE);					//Enable the Hibernation module
 	HibernateEnableExpClk(SysCtlClockGet());
 	HibernateRTCEnable();
@@ -66,6 +67,29 @@ void settime(int hr, int min, int s)
 	tt = mktime(timeinfo);
 }
 
+void morsetime()
+{
+	char data[5]={0};
+	unsigned long ulWhite[]={0xFF00,0xFF00,0xFF00};
+	unsigned long ulPurple[]={0xFF00,0x000,0xFF00};
+	struct tm * timeinfo;
+   int j =0;
+
+	  timeinfo = localtime (&tt);
+	  setcolor(ulWhite);
+	  strftime (data,5,"%H",timeinfo);
+	  for (j=0; j<sizeof(data); j++)
+	  	{
+	  		send(data[j]); // Send each character in the message.
+	  	}
+	  setcolor(ulPurple);
+	  strftime (data,5, "%M",timeinfo);
+	  for (j=0; j<sizeof(data); j++)
+	  	{
+	  		send(data[j]); // Send each character in the message.
+	  	}
+}
+
 void printtime(void)
 {
 	char * c_time_string;
@@ -98,6 +122,8 @@ void Changetime(int mode)
 		iChangeMin = 0;
 		iChangeHour = 0;
 		bChangeEnable = true;
+		bTimeSet = false;
+		selector = MINUTES;
 		break;
 	case NEXT:
 		if (bChangeEnable == true)
@@ -109,6 +135,7 @@ void Changetime(int mode)
 				bChangeEnable = false;
 				selector = MINUTES;
 				settime(iChangeHour,iChangeMin,00);
+				bTimeSet = true;
 			}
 		}
 		break;
@@ -124,6 +151,11 @@ void Changetime(int mode)
 	default:
 		break;
 	}
+}
+
+bool istimeset(void)
+{
+	return bTimeSet;
 }
 
 void RTC_Handler(void)

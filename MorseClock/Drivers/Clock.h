@@ -32,6 +32,8 @@ void printtime(void);
 void runtime(void);
 void Changetime(int mode);
 void RTC_Handler(void);
+void morsetime (void);
+bool istimeset(void);
 
 
 #endif /* CLOCK_H_ */

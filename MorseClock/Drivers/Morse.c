@@ -2,19 +2,24 @@
 #include "inc/hw_types.h"
 #include "driverlib/gpio.h"
 #include "driverlib/sysctl.h"
-/*
- * Morse.c
- *
- *  Created on: 10 feb. 2013
- *      Author: Administrator
- */
+
 #include "Morse.h"
 #include "rgb.h"
+
+unsigned long morsecolor[]={0xFF00,0xFF00,0xFF00};
+
+void setcolor(unsigned long *curcolor)
+{
+	morsecolor[0] = curcolor[0];
+	morsecolor[1] = curcolor[1];
+	morsecolor[2] = curcolor[2];
+}
+
 void digitalWrite (int iPin, float iValue)
 {
 	//GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3, iValue);
-	unsigned long ulColors[]={0xFF00,0xFF00,0xFF00};
-	RGBSet(ulColors,iValue);
+
+	RGBSet(morsecolor,iValue);
 }
 
 void delay(long int Length)

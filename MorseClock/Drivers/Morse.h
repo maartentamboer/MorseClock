@@ -20,6 +20,8 @@
 #define LOW  0x00
 #define DOTLENGTH 2000000
 
+void setcolor(unsigned long *curcolor);
+
 void send(char letter);
 void delay(long int Length);
 void digitalWrite (int iPin, float iValue);

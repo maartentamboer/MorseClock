@@ -10,8 +10,10 @@ ORDERED_OBJS += \
 $(GEN_CMDS__FLAG) \
 "./Drivers/rgb.obj" \
 "./Drivers/buttons.obj" \
+"./Drivers/adc.obj" \
 "./Drivers/Morse.obj" \
 "./Drivers/Clock.obj" \
+"./Utils/ustdlib.obj" \
 "./Utils/uartstdio.obj" \
 "./startup_ccs.obj" \
 "./main.obj" \
@@ -133,8 +135,8 @@ MorseClock.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 # Other Targets
 clean:
 	-$(RM) $(TMS470_EXECUTABLE_OUTPUTS__QUOTED) "MorseClock.out"
-	-$(RM) "main.pp" "startup_ccs.pp" "Utils\uartstdio.pp" "Drivers\Clock.pp" "Drivers\Morse.pp" "Drivers\buttons.pp" "Drivers\rgb.pp" 
-	-$(RM) "main.obj" "startup_ccs.obj" "Utils\uartstdio.obj" "Drivers\Clock.obj" "Drivers\Morse.obj" "Drivers\buttons.obj" "Drivers\rgb.obj" 
+	-$(RM) "main.pp" "startup_ccs.pp" "Utils\uartstdio.pp" "Utils\ustdlib.pp" "Drivers\Clock.pp" "Drivers\Morse.pp" "Drivers\adc.pp" "Drivers\buttons.pp" "Drivers\rgb.pp" 
+	-$(RM) "main.obj" "startup_ccs.obj" "Utils\uartstdio.obj" "Utils\ustdlib.obj" "Drivers\Clock.obj" "Drivers\Morse.obj" "Drivers\adc.obj" "Drivers\buttons.obj" "Drivers\rgb.obj" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

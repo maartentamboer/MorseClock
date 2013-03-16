@@ -86,5 +86,10 @@
 			<type>1</type>
 			<locationURI>PARENT-5-PROJECT_LOC/StellarisWare/utils/uartstdio.c</locationURI>
 		</link>
+		<link>
+			<name>Utils/ustdlib.c</name>
+			<type>1</type>
+			<locationURI>PARENT-5-PROJECT_LOC/StellarisWare/utils/ustdlib.c</locationURI>
+		</link>
 	</linkedResources>
 </projectDescription>
